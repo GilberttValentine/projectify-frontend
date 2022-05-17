@@ -1,1 +1,18 @@
-<p>project works!</p>
+<div *ngIf="searching === true && !notFound">
+  <h1 class="h1 mt-md-3 mt-5">{{ project.name }}</h1>
+  <p class="fw-lighter mt-3">{{ project.description }}</p>
+  <div class="mt-5">
+    <app-project-reports [reports]="reports" [projectName]="project.name"></app-project-reports>
+  </div>
+</div>
+<div *ngIf="!searching && !notFound; else notFoundProject">
+  <div class="d-flex flex-column justify-content-center align-items-center mh-100">
+    <div class="spinner-border" role="status"></div>
+    <span class="mt-3">Searching project...</span>
+  </div>
+</div>
+<ng-template #notFoundProject>
+  <ng-container *ngIf="!searching && notFound">
+    <p>Project not found</p>
+  </ng-container>
+</ng-template>

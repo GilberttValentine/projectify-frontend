@@ -19,7 +19,7 @@ body {
   /*line-height: 84px;*/
 }
 
-input, button {
+input, button, textarea {
   box-shadow: none!important;
 }
 

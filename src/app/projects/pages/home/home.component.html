@@ -1,1 +1,17 @@
-<p>home works!</p>
+<div class="d-flex justify-content-between align-items-center mt-5 mb-3">
+  <h1 class="h1">All projects</h1>
+  <button class="btn btn-primary btn-add" [routerLink]="['new-project']">
+    <i class="bi bi-plus-lg me-1"></i>
+    New project</button>
+</div>
+
+<article class="projects">
+  <div class="card" *ngFor="let project of projects">
+    <div class="card-body">
+      <a [routerLink]="[project._id]" class="project-name">{{ project.name }}</a>
+      <p class="card-text"> {{ project.description }} </p>
+      <p class="card-text created-at"><b>Created at:</b> <small class="ms-2">{{ transformDate(project.createdAt)
+          }}</small></p>
+    </div>
+  </div>
+</article>

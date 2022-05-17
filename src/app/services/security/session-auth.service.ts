@@ -1,6 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { catchError, map, of } from 'rxjs';
 import { VerifyTokenRequest } from 'src/app/auth/interfaces/request/verify-token';
 import { environment } from 'src/environments/environment';
@@ -9,10 +8,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class SessionAuthService {
-  constructor(private http: HttpClient, private cookies: CookieService) {}
+  constructor(private http: HttpClient) {}
 
   isLogged() {
-    const token = this.cookies.get('token');
+    const token = localStorage.getItem('token');
 
     if (!token) {
       return false;
@@ -25,7 +24,7 @@ export class SessionAuthService {
     return this.http
       .post(`${environment.BACKEND_URI}/security/verify-token`, request)
       .pipe(
-        map(res => {
+        map((res) => {
           return true;
         }),
         catchError((err: HttpErrorResponse) => {
@@ -39,10 +38,10 @@ export class SessionAuthService {
           return true;
         },
         error: () => {
-          this.cookies.delete('token');
+          localStorage.removeItem('token');
 
           return false;
-        }
+        },
       });
   }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { LoginRequest } from '../../interfaces/request/login';
 import { UserRequest } from '../../interfaces/request/user';
 import { VerifyTokenRequest } from '../../interfaces/request/verify-token';
@@ -26,8 +25,7 @@ export class SignUpComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService,
-    private cookies: CookieService
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -106,16 +104,16 @@ export class SignUpComponent implements OnInit {
 
               this.authService.getPayloadToken(body).subscribe({
                 next: (response: PayloadResponse) => {
-                  const { names, lastNames, email } = response;
+                  const { names, lastNames } = response;
 
                   const userName = `${names
                     .slice(0, 1)
                     .toUpperCase()}${lastNames.slice(0, 1).toUpperCase()}`;
-                  
-                  this.cookies.deleteAll();
 
-                  this.cookies.set('token', token);
-                  this.cookies.set('user', userName);
+                  localStorage.clear();
+
+                  localStorage.setItem('token', token);
+                  localStorage.setItem('user', userName);
 
                   setTimeout(() => {
                     this.router.navigate(['']);

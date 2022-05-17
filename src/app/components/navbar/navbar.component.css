@@ -1,0 +1,41 @@
+.navbar {
+  background: #ffffff;
+}
+
+.navbar-brand {
+  color: #000000;
+}
+
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
+.btn-rounded {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.dropdown-toggle::after {
+  content: none;
+}
+
+.navbar-toggler {
+  padding: 0;
+  font-weight: 400;
+  font-size: 1rem; 
+  line-height: 1;
+  color: #ffffff;
+  background-color: #000000;
+  border: none;
+  border-radius: 50%;
+  /* transition: box-shadow .15s ease-in-out; */
+}
+
+.app-name {
+  font-size: 25px;
+}
+
+.dropdown-item {
+  font-size: 14px;
+}

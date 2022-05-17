@@ -94,3 +94,7 @@ p {
     transform: rotate(360deg);
   }
 }
+
+.sign-here-message {
+  font-size: 13.5px;
+}

@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { NewProjectComponent } from './pages/new-project/new-project.component';
+import { NewReportComponent } from './pages/new-report/new-report.component';
 import { ProjectReportsComponent } from './pages/project-reports/project-reports.component';
 import { ProjectComponent } from './pages/project/project.component';
 import { ProjectsComponent } from './projects.component';
@@ -15,6 +17,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
+            component: HomeComponent,
           },
           {
             path: 'new-project',
@@ -29,7 +32,7 @@ const routes: Routes = [
               },
               {
                 path: 'reports',
-                component: ProjectReportsComponent,
+                component: NewReportComponent,
               },
             ],
           },

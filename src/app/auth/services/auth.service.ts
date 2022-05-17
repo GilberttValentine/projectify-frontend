@@ -1,6 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { catchError, map, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginRequest } from '../interfaces/request/login';
@@ -13,7 +12,7 @@ import { PayloadResponse } from '../interfaces/response/payload';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, private cookies: CookieService) {}
+  constructor(private http: HttpClient) {}
 
   createUser(request: UserRequest) {
     return this.http.post(`${environment.BACKEND_URI}/users`, request).pipe(
@@ -53,7 +52,7 @@ export class AuthService {
   }
 
   isLogged() {
-    const token = this.cookies.get('token');
+    const token = localStorage.getItem('token');
 
     if (!token) {
       return false;
@@ -66,7 +65,7 @@ export class AuthService {
     return this.http
       .post(`${environment.BACKEND_URI}/security/verify-token`, request)
       .pipe(
-        map(res => {
+        map((res) => {
           return true;
         }),
         catchError((err: HttpErrorResponse) => {
@@ -80,10 +79,10 @@ export class AuthService {
           return true;
         },
         error: () => {
-          this.cookies.delete('token');
+          localStorage.removeItem('token');
 
           return false;
-        }
+        },
       });
   }
 }

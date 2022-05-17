@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DateTime } from 'luxon';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,7 +7,6 @@ import { AuthService } from '../../services/auth.service';
 import { LoginResponse } from '../../interfaces/response/login';
 import { VerifyTokenRequest } from '../../interfaces/request/verify-token';
 import { PayloadResponse } from '../../interfaces/response/payload';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -19,21 +18,19 @@ export class LoginComponent implements OnInit {
 
   submitted: boolean = false;
   isLoading: boolean = false;
-  successLogin: boolean = false;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService,
-    private cookies: CookieService
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    const email = this.cookies.get('email');
+    const email = localStorage.getItem('email');
 
     this.loginForm = this.fb.group({
       email: [email ? email : '', Validators.required],
-      password: ['123456', Validators.required],
+      password: ['', Validators.required],
       remember: [email ? true : false],
     });
   }
@@ -48,12 +45,12 @@ export class LoginComponent implements OnInit {
 
     const currentHour = DateTime.local().hour;
 
-    if(currentHour >= splitAfternoon && currentHour <= splitEvening) {
-      return "Good afternoon";
-    } else if(currentHour >= splitEvening) {
-      return "Good evening";
+    if (currentHour >= splitAfternoon && currentHour <= splitEvening) {
+      return 'Good afternoon';
+    } else if (currentHour >= splitEvening) {
+      return 'Good evening';
     } else {
-      return "Good morning";
+      return 'Good morning';
     }
   }
 
@@ -93,11 +90,11 @@ export class LoginComponent implements OnInit {
                 .slice(0, 1)
                 .toUpperCase()}`;
 
-              this.cookies.set('token', token);
-              this.cookies.set('user', userName);
+              localStorage.setItem('token', token);
+              localStorage.setItem('user', userName);
 
               if (remember) {
-                this.cookies.set('email', email);
+                localStorage.setItem('email', email);
               }
 
               setTimeout(() => {

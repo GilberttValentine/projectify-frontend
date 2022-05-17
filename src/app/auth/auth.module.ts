@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
-import { CookieService } from 'ngx-cookie-service';
+import { AuthGuard } from './guard/auth.guard';
 
 @NgModule({
   declarations: [LoginComponent, SignUpComponent],
@@ -21,6 +21,6 @@ import { CookieService } from 'ngx-cookie-service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService, CookieService],
+  providers: [AuthService, AuthGuard],
 })
 export class AuthModule {}

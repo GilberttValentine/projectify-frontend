@@ -11,8 +11,8 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./projects/projects.module').then((m) => m.ProjectsModule),
-    canActivate: [AuthGuard],
-  }
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({
