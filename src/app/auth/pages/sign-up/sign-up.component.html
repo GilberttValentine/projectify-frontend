@@ -1,0 +1,122 @@
+<div class="d-flex flex-wrap mh-100">
+  <main class="flex-fill col-md-6 mh-100 px-5">
+    <div class="px-md-5 py-md-5">
+      <h1 class="app-name mt-5 mb-5 pb-md-2">Projectify</h1>
+      <form class="sign-up-form mt-5" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="form-welcome-message mt-5">
+          <p>Hello!</p>
+          <p>Nice to meet you</p>
+        </div>
+        <p class="fw-lighter">It's exciting that you want to be part of our team</p>
+        <div *ngIf="step === 1" style="margin-top: 20px">
+          <div class="form-group">
+            <label for="names">Names</label>
+            <input
+              [ngClass]="((signUpFormControl.names.touched || submitted) && signUpFormControl.names.errors?.required) ? 'form-control is-invalid' : 'form-control'"
+              placeholder="Enter your names" formControlName="names">
+            <div class="invalid-feedback">
+              Please provide a valid names.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastNames">Last names</label>
+            <input
+              [ngClass]="((signUpFormControl.lastNames.touched || submitted) && signUpFormControl.lastNames.errors?.required) ? 'form-control is-invalid' : 'form-control'"
+              placeholder="Enter your last names" formControlName="lastNames">
+            <div class="invalid-feedback">
+              Please provide a valid last names.
+            </div>
+          </div>
+        </div>
+        <div *ngIf="step === 2" style="margin-top: 20px">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input
+              [ngClass]="((signUpFormControl.email.touched || submitted) && signUpFormControl.email.errors?.required) ? 'form-control is-invalid' : 'form-control'"
+              placeholder="Enter your email address" formControlName="email">
+            <div class="invalid-feedback">
+              Please provide a valid email address.
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <div class="input-group has-validation">
+              <input type="password"
+                [ngClass]="((signUpFormControl.password.touched || submitted) && signUpFormControl.password.errors?.required) ? 'form-control is-invalid' : 'form-control border-end-0'"
+                placeholder="Enter your password" #passwordInput formControlName="password">
+              <span class="input-group-text" (click)="changeTypePasswordInput(passwordInput, iconShowPassword)"><i
+                  class="bi bi-eye" #iconShowPassword></i></span>
+              <div class="invalid-feedback">
+                Please provide a valid password.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-grid gap-2">
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-primary btn-next" (click)="next()" *ngIf="step === 1">
+              Next
+            </button>
+            <div  *ngIf="step === 2">
+              <button class="btn btn-outline-dark btn-back me-2" (click)="previous()">
+                Back
+              </button>
+              <button class="btn btn-primary" type="submit" [style]="isLoading ? 'width: 200px':''">
+                <span class="spinner" *ngIf="isLoading"></span>
+                Sign up now
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="progress fixed-bottom col-lg-6" style="height: 7px;border-radius: 0;">
+      <div class="progress-bar" role="progressbar" [style]="step === 1 ? 'width: 50%;': 'width: 100%;'"></div>
+    </div>
+  </main>
+  <main class="flex-fill bg-light col-md-6 d-none d-lg-block">
+    <div class="d-flex flex-wrap align-items-center justify-content-center mh-100">
+      <div class="sign-up-vector text-center d-none d-lg-block">
+        <img class="my-5" src="assets/svg/sign-up-vector.svg" alt="Sign up SVG" />
+      </div>
+    </div>
+  </main>
+  <!--
+  <main class="py-5 flex-fill">
+    <div class="px-lg-5 px-md-0 ">
+      <h1 class="app-name ms-2 ms-lg-5 mt-3">Projectify</h1>
+      <form class="sign-up-form col-md-6 my-5 px-md-0 px-lg-5 py-md-5" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="form-welcome-message">
+          <p>Hello!</p>
+          <p>Nice to meet you</p>
+        </div>
+        <p>It's exciting that you want to be part of our team</p>
+        <div class="form-group" style="margin-top: 20px">
+          <label for="names">Names</label>
+          <input
+            [ngClass]="((signUpFormControl.names.touched || submitted) && signUpFormControl.names.errors?.required) ? 'form-control is-invalid' : 'form-control'"
+            placeholder="Enter your names" formControlName="names">
+          <div class="invalid-feedback">
+            Please provide a valid name.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastnames">Last names</label>
+          <input
+            [ngClass]="((signUpFormControl.names.touched || submitted) && signUpFormControl.names.errors?.required) ? 'form-control is-invalid' : 'form-control'"
+            placeholder="Enter your last names" formControlName="lastnames">
+          <div class="invalid-feedback">
+            Please provide a valid last names.
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+  <main class="py-5 bg-light flex-fill">
+    <div class="d-flex flex-wrap justify-content-center">
+      <div class="sign-up-vector my-md-5 col-md-6 text-center d-none d-lg-block">
+        <img class="my-5" src="assets/svg/sign-up-vector.svg" alt="Sign up SVG" />
+      </div>
+    </div>
+  </main>-->
+</div>

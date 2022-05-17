@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-name {
+  font-family: "Pacifico", cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  /*line-height: 84px;*/
+}
+
+input, button {
+  box-shadow: none!important;
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, .5)!important;
+}
