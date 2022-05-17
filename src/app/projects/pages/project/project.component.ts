@@ -4,6 +4,7 @@ import { DateTime } from 'luxon';
 import { Project } from '../../interfaces/project';
 import { Report } from '../../interfaces/report';
 import { ProjectService } from '../../services/project.service';
+import { ReportService } from '../../services/report.service';
 
 @Component({
   selector: 'app-project',
@@ -22,14 +23,15 @@ export class ProjectComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private reportService: ReportService
   ) {
-    this.getProduct();
+    this.getProject();
   }
 
   ngOnInit(): void {}
 
-  private getProduct() {
+  private getProject() {
     const projectId = this.route.snapshot.paramMap.get('id');
 
     this.projectId = projectId ? projectId : '';
@@ -49,7 +51,7 @@ export class ProjectComponent implements OnInit {
   }
 
   private getReports() {
-    this.projectService.findProjectReports(this.projectId).subscribe({
+    this.reportService.findProjectReports(this.projectId).subscribe({
       next: (response: Report) => {
         this.reports = response;
 

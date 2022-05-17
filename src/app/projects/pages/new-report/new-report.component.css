@@ -1,0 +1,83 @@
+.h1 {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+  color: #000000;
+}
+
+.orientation-message {
+  font-size: 15px;
+}
+
+.create-project-vector img {
+  width: 500px;
+}
+
+.form-group label {
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.form-group .form-control, .form-group .form-select {
+  font-weight: 300;
+  font-size: 14px;
+  height: 42px;
+  border-radius: 0.438rem;
+}
+
+.form-group .input-group-text {
+  font-size: 20px;
+  padding-bottom: 0;
+  padding-top: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 0.438rem;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.btn {
+  font-size: 14px;
+  margin-top: 5px;
+  font-weight: 600;
+  border-radius: 2.5rem;
+  height: 50px;
+}
+
+.invalid-feedback {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.spinner {
+  display: inline-block;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: -0.2em;
+  margin-left: -10px;
+  margin-right: 5px;
+  animation: spin 0.75s ease infinite;
+  border-width: 0.2em;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

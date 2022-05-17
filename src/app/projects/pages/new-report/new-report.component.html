@@ -1,1 +1,41 @@
-<p>new-report works!</p>
+<h1 class="h1 mt-md-0 mt-5">Create a new report</h1>
+<p class="orientation-message fw-lighter">
+  In this space you can report the number of hours you will dedicate to project
+</p>
+<div class="d-flex flex-wrap mh-100">
+  <main class="flex-fill col-md-6 d-none d-lg-block">
+    <div class="d-flex flex-wrap align-items-center">
+      <div class="create-project-vector text-center d-none d-lg-block">
+        <img class="my-5" src="assets/svg/create-project-vector.svg" alt="Create project SVG" />
+      </div>
+    </div>
+  </main>
+  <main class="flex-fill col-md-6">
+    <form class="project-form" [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label class="form-label">Hours</label>
+        <input
+          [ngClass]="((reportFormControl.hours.touched || submitted) && reportFormControl.hours.errors?.required) ? 'form-control is-invalid' : 'form-control'"
+          placeholder="Enter a hours to dedicate" formControlName="hours" type="number" min="0">
+        <div class="invalid-feedback">
+          You have exceeded the limit of hours or already made a report this week. Please provide a valid hours.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Minutes</label>
+        <input
+          [ngClass]="((reportFormControl.minutes.touched || submitted) && reportFormControl.minutes.errors?.required) ? 'form-control is-invalid' : 'form-control'"
+          placeholder="Enter a minutes to dedicate" formControlName="minutes" type="number" min="0" max="59">
+        <div class="invalid-feedback">
+          You have exceeded the limit of hours or already made a report this week. Please provide a valid minutes.
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="submit">
+          <span class="spinner" *ngIf="isLoading"></span>
+          Create report
+        </button>
+      </div>
+    </form>
+  </main>
+</div>

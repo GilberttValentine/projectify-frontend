@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
         this.projects = response;
       },
       error: (e) => {
-        console.log(e);
       },
     });
   }

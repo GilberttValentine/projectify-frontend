@@ -1,6 +1,6 @@
 export interface Report {
   readonly userId?: string;
-  readonly projectId?: string;
+  projectId?: string;
   readonly dedication: {
     hours: number;
     minutes: number;
