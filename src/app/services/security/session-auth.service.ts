@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, of } from 'rxjs';
+import { catchError, map } from 'rxjs';
 import { VerifyTokenRequest } from 'src/app/auth/interfaces/request/verify-token';
 import { environment } from 'src/environments/environment';
 

@@ -50,4 +50,19 @@ export class ReportService {
         })
       );
   }
+
+  findMyReports() {
+    return this.http
+      .get<Report>(
+        `${environment.BACKEND_URI}/reports/my-reports`,
+        this.httpOptions
+      )
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          const { status, message } = err.error;
+
+          throw { status, message };
+        })
+      );
+  }
 }

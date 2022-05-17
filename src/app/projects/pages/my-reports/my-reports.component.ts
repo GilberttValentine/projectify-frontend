@@ -1,17 +1,25 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DateTime } from 'luxon';
+import { ReportService } from '../../services/report.service';
 
 @Component({
-  selector: 'app-project-reports',
-  templateUrl: './project-reports.component.html',
-  styleUrls: ['./project-reports.component.css'],
+  selector: 'app-my-reports',
+  templateUrl: './my-reports.component.html',
+  styleUrls: ['./my-reports.component.css'],
 })
-export class ProjectReportsComponent implements OnInit {
+export class MyReportsComponent implements OnInit {
+  reports: any = [];
 
-  @Input() reports: any;
-  @Input() projectName: any;
-
-  constructor() {}
+  constructor(
+    private reportService: ReportService,
+  ) {
+    this.reportService.findMyReports().subscribe({
+      next: (response) => {
+        this.reports = response;
+      },
+      error: () => {},
+    });
+  }
 
   ngOnInit(): void {}
 

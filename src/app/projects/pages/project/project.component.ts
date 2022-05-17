@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { DateTime } from 'luxon';
+import { ActivatedRoute } from '@angular/router';
 import { Project } from '../../interfaces/project';
 import { Report } from '../../interfaces/report';
 import { ProjectService } from '../../services/project.service';

@@ -1,9 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map } from 'rxjs';
+import { catchError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Project } from '../interfaces/project';
-import { Report } from '../interfaces/report';
 
 @Injectable({
   providedIn: 'root',
@@ -46,7 +45,10 @@ export class ProjectService {
 
   findProjectById(id: string | null) {
     return this.http
-      .get<Project>(`${environment.BACKEND_URI}/projects/${id}`, this.httpOptions)
+      .get<Project>(
+        `${environment.BACKEND_URI}/projects/${id}`,
+        this.httpOptions
+      )
       .pipe(
         catchError((err: HttpErrorResponse) => {
           const { status, message } = err.error;

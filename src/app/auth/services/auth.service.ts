@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, of, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginRequest } from '../interfaces/request/login';
 import { UserRequest } from '../interfaces/request/user';

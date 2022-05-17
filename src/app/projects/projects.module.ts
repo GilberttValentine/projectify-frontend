@@ -15,6 +15,7 @@ import { ProjectComponent } from './pages/project/project.component';
 import { ProjectsComponent } from './projects.component';
 import { ProjectReportsComponent } from './pages/project-reports/project-reports.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
+import { MyReportsComponent } from './pages/my-reports/my-reports.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { SidebarComponent } from '../components/sidebar/sidebar.component';
     NavbarComponent,
     SidebarComponent,
     NewReportComponent,
+    MyReportsComponent,
   ],
   imports: [CommonModule, ProjectsRoutingModule, ReactiveFormsModule],
   providers: [ProjectService, ReportService],

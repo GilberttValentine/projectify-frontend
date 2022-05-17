@@ -1,0 +1,19 @@
+<h1 class="h1">My reports</h1>
+
+<article class="reports mt-3" *ngIf="reports.length >= 1; else notFoundReports">
+  <div class="d-flex flex-wrap justify-content-md-start justify-content-center">
+    <div class="card me-md-3" *ngFor="let report of reports">
+      <div class="card-body">
+        <a [routerLink]="['/projects',report.projectId]" class="project-name">{{ report.projectId }}</a>
+        <p class="card-text mt-3"> <b>Hours to dedicated</b> </p>
+        <p class="card-text hours-dedicated">{{ hoursDedicated(report.dedication) }}</p>
+        <p class="card-text created-at mt-4"><b>Reported at:</b> <small class="ms-2">{{
+            transformDate(report.createdAt)
+            }}</small></p>
+      </div>
+    </div>
+  </div>
+</article>
+<ng-template #notFoundReports>
+  No reports found
+</ng-template>
